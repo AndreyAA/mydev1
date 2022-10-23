@@ -36,7 +36,7 @@ public class StateKey implements IStateKey {
     }
 
     @Override
-    public String stateKey() {
+    public String key() {
         return String.valueOf(hero) + String.valueOf(base) + String.valueOf(tower);
     }
 }

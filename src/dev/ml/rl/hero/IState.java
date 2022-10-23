@@ -2,9 +2,9 @@ package dev.ml.rl.hero;
 
 public interface IState {
 
-    IState clone();
+    IState copy();
     String[] actions();
-    double doAction(int actionId);
+    void doAction(int actionId);
 
     boolean isWin();
     boolean isFail();
