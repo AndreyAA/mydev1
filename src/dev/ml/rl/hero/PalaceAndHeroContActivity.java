@@ -1,7 +1,7 @@
 package dev.ml.rl.hero;
 
 public class PalaceAndHeroContActivity {
-
+/*
     public static void main(String[] args) {
         RLEngine rlEngine = new RLEngine(1000, 0.05, ()->new State(10, 2, 1, 1), 50, 0.6);
         rlEngine.setDebug(false);
@@ -26,6 +26,6 @@ public class PalaceAndHeroContActivity {
 
         }
 
-    }
+    }*/
 
 }

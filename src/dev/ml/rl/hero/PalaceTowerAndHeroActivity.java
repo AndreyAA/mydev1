@@ -8,7 +8,7 @@ public class PalaceTowerAndHeroActivity {
     public static void main(String[] args) {
         RLEngine rlEngine = new RLEngine(1000, 0.1,
                 ()->new State(100, 50, 30, 5, 5),
-                90, 0.8);
+                60, 0.8);
         rlEngine.setDebug(false);
         rlEngine.start();
     }
@@ -128,7 +128,17 @@ public class PalaceTowerAndHeroActivity {
 
         @Override
         public IStateKey stateKey() {
-            return () -> (((heroHealth < 16) ? "0" : "1") + ((base <= 0) ? "0" : "1") + ((tower <= 0) ? "0" : "1"));
+            return new IStateKey() {
+                @Override
+                public String key() {
+                    return ((heroHealth < 16) ? "0" : "1") + ((base <= 0) ? "0" : "1") + ((tower <= 0) ? "0" : "1");
+                }
+
+                @Override
+                public String keyDescription() {
+                    return "hbt";
+                }
+            };
         }
 
         @Override

@@ -11,7 +11,7 @@ public class PalaceAndHeroActivity {
     public static void main(String[] args) {
         RLEngine rlEngine = new RLEngine(1000, 0.1,
                 () -> new State(100, 30, 5, 5),
-                90, 0.8);
+                60, 0.8);
         rlEngine.setDebug(false);
         rlEngine.start();
     }
@@ -115,6 +115,10 @@ public class PalaceAndHeroActivity {
                     return h + b;
                 }
 
+                @Override
+                public String keyDescription() {
+                    return "hb";
+                }
             };
         }
 

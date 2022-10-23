@@ -100,7 +100,7 @@ public class RLEngine {
     }
 
     private void printRewards(boolean debug) {
-        log("current rewards:" + Arrays.toString(currentState.actions()), debug);
+        log(currentState.stateKey().keyDescription() + " current rewards:" + Arrays.toString(currentState.actions()), debug);
         rewardsToState.forEach((key, list) -> {
             double sum = list.stream().mapToDouble(v->Math.abs(v.getValue())).sum();
             StringBuilder sb = new StringBuilder();
