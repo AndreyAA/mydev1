@@ -33,6 +33,11 @@ public class PalaceAndHeroActivity {
         }
 
         @Override
+        public IState clone() {
+            return new State(base, heroHealth, heroDamage, baseDemage);
+        }
+
+        @Override
         public String[] actions() {
             return new String[]{"heal", "attack"};
         }

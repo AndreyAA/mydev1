@@ -5,27 +5,29 @@ import java.util.*;
 public class RLEngine {
     private final Random rnd = new Random();
     private final StateProvider stateProvider;
-    private final int count;
+    private final int episodes;
     private final double alfa;
 
     private IState currentState;
     private final Map<String, List<MutableDouble>> rewardsToState = new HashMap<>();
+
+    private final List<IState> states = new ArrayList<>();
     private final double alfa2;
     private int wins = 0;
     private int defeats = 0;
     private boolean debug = true;
 
-    public RLEngine(int count, double alfa, StateProvider stateProvider) {
+    public RLEngine(int episodes, double alfa, StateProvider stateProvider) {
         this.stateProvider = stateProvider;
-        this.count = count;
+        this.episodes = episodes;
         this.alfa = alfa;
         this.alfa2 = 2*alfa;
     }
 
     public void start() {
         long start = System.currentTimeMillis();
-        for (int i = 0; i < count; i++) {
-            log("start new case");
+        for (int i = 0; i < episodes; i++) {
+            log("start new episode");
             currentState = stateProvider.createState();
 
             while (true) {
@@ -58,7 +60,7 @@ public class RLEngine {
         }
     long stop=System.currentTimeMillis();
         long delta = stop - start;
-        log(count + " steps took: " + delta + " ms,  " + (double)delta/count + " ms/step", true);
+        log(episodes + " episodes took: " + delta + " ms,  " + (double)delta/ episodes + " ms/episode", true);
         log("wins:" + wins + ", defeats:" + defeats + ", " + ((double)wins*100/(wins+defeats)) +"%", true);
         printRewards(true);
     }
